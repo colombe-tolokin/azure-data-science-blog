@@ -1,5 +1,5 @@
 ---
-title: "Azure Data Science Blog"
+title: " "
 image: profile.jpg
 about:
   template: jolla
