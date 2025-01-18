@@ -2,22 +2,246 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "Azure Data Science Blog",
+    "title": "Connect",
     "section": "",
-    "text": "About this blog"
+    "text": "Welcome here!"
   },
   {
     "objectID": "posts/azure-data-science/index.html",
     "href": "posts/azure-data-science/index.html",
-    "title": "Azure Data Science Blog",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
     "section": "",
-    "text": "This is a post with executable code."
+    "text": "Cloud computing has transformed the data science by providing scalable, flexible, and powerful tools to handle large datasets, build complex models, and deploy applications. Microsoft Azure is a leading cloud computing platform that offers a wide range of services for data scientists. From scalable storage to automated machine learning, Azure simplifies the entire data science workflow.\nIn this blog, I will guide you step-by-step on how to set up your Azure environment, store data, train a machine learning model, and deploy it for real-world use. Whether you’re just getting started or looking to streamline your data science projects, Azure provides all the tools to make your workflow more efficient and effective.\nThis guide covers both code-based and no-code methods to build and deploy machine learning models on Azure. If you’re eager to dive into coding for full control or prefer a visual, drag-and-drop interface to get started quickly, Azure has you covered. You’ll learn how to manage data, train models, and deploy solutions—step-by-step.\nHaving used Azure in my previous role as a data scientist intern, I can confidently say it has modernized our data workflows and accelerated model deployment in team projects. Azure’s flexibility allowed us to scale infrastructure according to project demands and seamlessly integrate machine learning models into production environments."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Azure Data Science Blog",
+    "title": "Data Science Blog - Colombe Tolokin",
     "section": "",
-    "text": "Azure Data Science Blog\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJan 14, 2025\n\n\nColombe Tolokin\n\n\n\n\n\n\nNo matching items"
+    "text": "Getting started with Microsoft Azure for Data Science projects\n\n\n\n\n\n\nAzure\n\n\nData Science\n\n\nCloud\n\n\n\n\n\n\n\n\n\nJan 14, 2025\n\n\nColombe Tolokin\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#introduction",
+    "href": "posts/azure-data-science/index.html#introduction",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "",
+    "text": "Cloud computing has transformed the data science by providing scalable, flexible, and powerful tools to handle large datasets, build complex models, and deploy applications. Microsoft Azure is a leading cloud computing platform that offers a wide range of services for data scientists. From scalable storage to automated machine learning, Azure simplifies the entire data science workflow.\nIn this blog, I will guide you step-by-step on how to set up your Azure environment, store data, train a machine learning model, and deploy it for real-world use. Whether you’re just getting started or looking to streamline your data science projects, Azure provides all the tools to make your workflow more efficient and effective.\nThis guide covers both code-based and no-code methods to build and deploy machine learning models on Azure. If you’re eager to dive into coding for full control or prefer a visual, drag-and-drop interface to get started quickly, Azure has you covered. You’ll learn how to manage data, train models, and deploy solutions—step-by-step.\nHaving used Azure in my previous role as a data scientist intern, I can confidently say it has modernized our data workflows and accelerated model deployment in team projects. Azure’s flexibility allowed us to scale infrastructure according to project demands and seamlessly integrate machine learning models into production environments."
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#step-1-set-up-azure",
+    "href": "posts/azure-data-science/index.html#step-1-set-up-azure",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "Step 1: Set Up Azure",
+    "text": "Step 1: Set Up Azure\nGetting started with Azure is simple. If you don’t already have an Azure account, follow these steps:\n\n1. Sign Up\n\nVisit the Azure Website.\n\n\n\n\nAzure Page\n\n\n\nClick on “Start Free” to begin the sign-up process. (Note: Credit card information is required to try the free version of Azure.)\nSign in with your Microsoft account or create a new one if you don’t have one.\n\nAzure’s free account allows you to experiment and build solutions for one month as long as your credits last.\nLearn More: Billing and subscription documentation\n\n\n2. Install Azure CLI\nAzure CLI (Command-Line Interface) is a tool that allows you to manage Azure resources directly from your terminal. It simplifies the process of interacting with Azure services without needing to navigate the web portal.\n\n2.1. Download and Install Azure CLI\n\nGo to the Azure CLI Installation Page.\n\n\n\n\nAzure CLI Installation\n\n\n\nChoose the installation option based on your operating system (Windows, macOS, or Linux).\n\nFollow the step-by-step instructions provided on the page.\n\n\n\n2.2. Verify Installation\nAfter installation, open your terminal and run:\naz --version\nIf the installation was successful, this command will display the installed Azure CLI version.\n\n\n2.3. Sign In to Azure\nOnce Azure CLI is installed, sign in to your Azure account:\naz login\nA browser window will open prompting you to log in with your Azure credentials. After logging in, the CLI will display your subscription details. Azure CLI makes it easier to create and manage Azure resources efficiently, saving time and simplifying workflows.\nWith Azure CLI ready, let’s create a Resource Group to organize your project resources. This will help you efficiently manage and group related services, ensuring a smooth and organized workflow throughout your data science project."
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#step-2-configure-azure-storage",
+    "href": "posts/azure-data-science/index.html#step-2-configure-azure-storage",
+    "title": "Getting started with Azure for Data Science projects",
+    "section": "Step 2: Configure Azure Storage",
+    "text": "Step 2: Configure Azure Storage\nAzure Blob Storage is ideal for storing large amounts of unstructured data.\n\nCreate a Storage Account:\naz storage account create \\\n    --name datasciencestorage \\\n    --resource-group DataScienceRG \\\n    --location eastus \\\n    --sku Standard_LRS\n\nLearn more: Azure Blob Storage\n\nCreate a Blob Container:\naz storage container create \\\n    --name datacontainer \\\n    --account-name datasciencestorage \\\n    --public-access off\nUpload Data to Blob Storage:\naz storage blob upload \\\n    --account-name datasciencestorage \\\n    --container-name datacontainer \\\n    --file data.csv \\\n    --name data.csv"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#step-3-create-azure-machine-learning-workspace",
+    "href": "posts/azure-data-science/index.html#step-3-create-azure-machine-learning-workspace",
+    "title": "Getting started with Azure for Data Science projects",
+    "section": "Step 3: Create Azure Machine Learning Workspace",
+    "text": "Step 3: Create Azure Machine Learning Workspace\nAzure Machine Learning Workspace centralizes resources for machine learning workflows.\naz ml workspace create \\\n    --name data_science_ws \\\n    --resource-group DataScienceRG \\\n    --location eastus\nAccess Azure ML Studio to manage datasets, experiments, and models. - Learn more: Azure Machine Learning Documentation"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#step-4-train-a-machine-learning-model",
+    "href": "posts/azure-data-science/index.html#step-4-train-a-machine-learning-model",
+    "title": "Getting started with Azure for Data Science projects",
+    "section": "Step 4: Train a Machine Learning Model",
+    "text": "Step 4: Train a Machine Learning Model\nUse Azure’s AutoML to automate model training and selection.\nfrom azureml.core import Workspace, Experiment, Dataset\nfrom azureml.train.automl import AutoMLConfig\n\n# Connect to the workspace\nws = Workspace.from_config()\nexperiment = Experiment(ws, 'automl_demo')\n\n# Load data from Blob Storage\ndatastore = ws.get_default_datastore()\ndataset = Dataset.Tabular.from_delimited_files(path=(datastore, 'datacontainer/data.csv'))\n\n# Define AutoML config\nautoml_config = AutoMLConfig(\n    task='classification',\n    primary_metric='accuracy',\n    training_data=dataset,\n    label_column_name='target',\n    experiment_timeout_minutes=60\n)\n\n# Submit experiment\nrun = experiment.submit(automl_config)\nrun.wait_for_completion(show_output=True)\n\nLearn more: Azure AutoML Documentation"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#step-5-deploy-the-model",
+    "href": "posts/azure-data-science/index.html#step-5-deploy-the-model",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "Step 5: Deploy the Model",
+    "text": "Step 5: Deploy the Model\nOnce the model is trained, it can be deployed as a web service for real-time predictions.\nfrom azureml.core.model import InferenceConfig, Model\nfrom azureml.core.webservice import AciWebservice\n\n# Register the model\nmodel = run.register_model(model_name='best_model', model_path='outputs/model.pkl')\n\n# Define inference configuration\ninference_config = InferenceConfig(entry_script=\"score.py\", environment=myenv)\n\ndeployment_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)\n\n# Deploy the model\nservice = Model.deploy(\n    workspace=ws,\n    name=\"model-service\",\n    models=[model],\n    inference_config=inference_config,\n    deployment_config=deployment_config\n)\nservice.wait_for_deployment(show_output=True)\n\nprint(f\"Scoring URI: {service.scoring_uri}\")\nLearn more: Deploy Models with Azure ML"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#conclusion",
+    "href": "posts/azure-data-science/index.html#conclusion",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "11 Conclusion",
+    "text": "11 Conclusion\nMicrosoft Azure is a powerful tool for building, training, and deploying machine learning models. Its scalable and flexible services make it ideal for data science projects. By following this guide, you can efficiently manage your data science workflow, from data storage to deploying models for real-world use. Azure empowers data scientists to build secure, scalable, and impactful solutions that drive meaningful insights and innovation.\nReady to get started? Sign up for a free Azure account today and start building your next data science solution!"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#best-practices-and-tips",
+    "href": "posts/azure-data-science/index.html#best-practices-and-tips",
+    "title": "Getting started with Azure for Data Science projects",
+    "section": "Best Practices and Tips",
+    "text": "Best Practices and Tips\n\nResource Management: Regularly monitor your resource usage in the Azure Portal to manage costs.\nData Security: Implement role-based access control (RBAC) and encrypt sensitive data.\nScalability: Consider using Azure Kubernetes Service (AKS) for production-level deployments.\nAutomation: Use Azure DevOps or GitHub Actions for CI/CD pipelines.\nLearn more: Azure Best Practices"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#step-3-machine-learning-with-azure-automl",
+    "href": "posts/azure-data-science/index.html#step-3-machine-learning-with-azure-automl",
+    "title": "Getting started with Azure for Data Science projects",
+    "section": "Step 3: Machine Learning with Azure AutoML",
+    "text": "Step 3: Machine Learning with Azure AutoML\nAzure AutoML empowers data scientists and developers to build machine learning models without extensive coding. It automates model selection and hyperparameter tuning, allowing users to focus on data preparation and business insights. AutoML supports various tasks such as classification, regression, and time-series forecasting, making it versatile for different data science applications.\n Figure 2: Setting up a new Azure Machine Learning Workspace to organize your resources.\nAutomated Machine Learning (AutoML) simplifies the process of training models without extensive coding.\nfrom azureml.core import Workspace, Experiment, Dataset\nfrom azureml.train.automl import AutoMLConfig\n\nws = Workspace.from_config()\nexperiment = Experiment(ws, 'automl_demo')\ndatastore = ws.get_default_datastore()\ndataset = Dataset.Tabular.from_delimited_files(path=(datastore, 'datacontainer/data.csv'))\n\nautoml_config = AutoMLConfig(\n    task='classification',\n    primary_metric='accuracy',\n    training_data=dataset,\n    label_column_name='target',\n    experiment_timeout_minutes=60\n)\n\nrun = experiment.submit(automl_config)\nrun.wait_for_completion(show_output=True)\n\nLearn more: Azure AutoML Documentation"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#step-4-deploy-the-model",
+    "href": "posts/azure-data-science/index.html#step-4-deploy-the-model",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "Step 4: Deploy the Model",
+    "text": "Step 4: Deploy the Model\nOnce the model is trained, it can be deployed as a web service for real-time predictions.\nfrom azureml.core.model import InferenceConfig, Model\nfrom azureml.core.webservice import AciWebservice\n\n# Register the model\nmodel = run.register_model(model_name='best_model', model_path='outputs/model.pkl')\n\n# Define inference configuration\ninference_config = InferenceConfig(entry_script=\"score.py\", environment=myenv)\n\ndeployment_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)\n\n# Deploy the model\nservice = Model.deploy(\n    workspace=ws,\n    name=\"model-service\",\n    models=[model],\n    inference_config=inference_config,\n    deployment_config=deployment_config\n)\nservice.wait_for_deployment(show_output=True)\n\nprint(f\"Scoring URI: {service.scoring_uri}\")\nLearn more: Deploy Models with Azure ML"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#references",
+    "href": "posts/azure-data-science/index.html#references",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "12 References",
+    "text": "12 References\n\nAzure in the Context of Data Sciencehttps://www.spyglassmtg.com/blog/azure-in-the-context-of-data-science\nAzure Free Account: https://azure.microsoft.com/en-ca/free/\n\nAzure CLI Installation: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli\n\nAzure Cost Management and Billing: https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/\n\nAzure Portal - Resource Groups: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal\n\nCreate a Storage Account: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create\n\nUpload Files to Blob Storage: https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal\n\nAzure Blob Storage Overview: https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-overview\n\nAzure AutoML Documentation: https://learn.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-train\n\nDeploy Docker Containers in Azure: https://learn.microsoft.com/en-us/azure/container-instances/container-instances-overview\n\nDeploy Models with Azure ML: https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-and-where"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#step-3-train-a-machine-learning-model-with-azure-automl",
+    "href": "posts/azure-data-science/index.html#step-3-train-a-machine-learning-model-with-azure-automl",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "Step 3: Train a Machine Learning Model with Azure AutoML",
+    "text": "Step 3: Train a Machine Learning Model with Azure AutoML\nAzure AutoML makes it easier to create machine learning models by automating model selection and tuning.\nfrom azureml.core import Workspace, Experiment, Dataset\nfrom azureml.train.automl import AutoMLConfig\n\n# Connect to Azure Workspace\nws = Workspace.from_config()\nexperiment = Experiment(ws, 'automl_demo')\n\n# Load data from Blob Storage\ndatastore = ws.get_default_datastore()\ndataset = Dataset.Tabular.from_delimited_files(path=(datastore, 'datacontainer/data.csv'))\n\n# Configure AutoML settings\nautoml_config = AutoMLConfig(\n    task='classification',\n    primary_metric='accuracy',\n    training_data=dataset,\n    label_column_name='target',\n    experiment_timeout_minutes=60\n)\n\n# Submit the experiment\nrun = experiment.submit(automl_config)\nrun.wait_for_completion(show_output=True)\nLearn more about AutoML: Azure AutoML Documentation"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#best-practices",
+    "href": "posts/azure-data-science/index.html#best-practices",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "10 Best Practices",
+    "text": "10 Best Practices\n\nResource Management: Use Azure Cost Management tools to monitor and control cloud spending. Regularly review active resources and shut down unused services to minimize unnecessary costs.\nData Security: Apply encryption for data at rest and in transit. Implement Role-Based Access Control (RBAC) to restrict access to sensitive resources.\nScaling: Use Azure Kubernetes Service (AKS) for scalable deployments. Leverage auto-scaling to handle fluctuating workloads efficiently.\nAutomation: Integrate CI/CD pipelines with Azure DevOps or GitHub Actions for automated model retraining and deployment, ensuring consistent and reliable updates.\nMonitoring: Use Azure Monitor and Application Insights to track model performance and detect issues in real-time."
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#step-2-install-azure-cli",
+    "href": "posts/azure-data-science/index.html#step-2-install-azure-cli",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "Step 2: Install Azure CLI",
+    "text": "Step 2: Install Azure CLI\nAzure CLI (Command-Line Interface) is a tool that allows you to manage Azure resources directly from your terminal. It simplifies the process of interacting with Azure services without needing to navigate the web portal.\n\n1. Download and Install Azure CLI\n\nGo to the Azure CLI Installation Page.\n\n\n\n\nAzure CLI Installation\n\n\n\nChoose the installation option based on your operating system (Windows, macOS, or Linux).\n\nFollow the step-by-step instructions provided on the page.\n\n\n\n2. Verify Installation\nAfter installation, open your terminal and run:\naz --version\nIf the installation was successful, this command will display the installed Azure CLI version.\n\n\n3. Sign In to Azure\nOnce Azure CLI is installed, sign in to your Azure account:\naz login\nA browser window will open prompting you to log in with your Azure credentials.\nAfter logging in, the CLI will display your subscription details.\nAzure CLI makes it easier to create and manage Azure resources efficiently, saving time and simplifying workflows.\n\n\n3. Create a Resource Group\nResource groups help organize Azure resources.\naz group create --name ResourceGroupName --location SelectYourLocation\n\nLearn more: Azure Resource Groups"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#step-3-configure-azure-storage",
+    "href": "posts/azure-data-science/index.html#step-3-configure-azure-storage",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "Step 3: Configure Azure Storage",
+    "text": "Step 3: Configure Azure Storage\nAzure Blob Storage is a solution for storing large files, datasets, and backups. It offers integration with other Azure services, making it an excellent choice for managing unstructured data in data science projects. Its scalability, security, and cost-effectiveness make it ideal for growing projects.\n\n3.1. Create a Storage Account\nA Storage Account in Azure allows you to access Blob Storage and other storage services.\n\nGo to the Azure Portal if you’re not already signed in.\n\nIn the search bar, type “Storage Accounts” and click on it.\n\nClick on “+ Create” to start a new storage account.\n\nFill in the details:\n- Subscription: Select your Azure subscription.\n- Resource Group: Choose the Resource Group you created earlier.\n- Storage Account Name: Enter a unique name using lowercase letters only.\n- Region: Select the same region as your Resource Group for better performance.\n- Performance: Keep as Standard for general use.\n- Redundancy: Choose Locally-redundant storage (LRS) for cost-effective redundancy.\n\nClick “Review + Create”, then click “Create” to deploy the storage account.\n\nLearn More: Create a Storage Account\n\n\n3.2. Upload Data to Blob Storage\nOnce your storage account is ready, you can upload data to Blob Storage.\n\nIn the Azure Portal, go to your Storage Account.\n\nUnder Data storage, click “Containers”.\n\nClick “+ Container” to create a new container.\n\nName: Enter a name for your container.\n\nPublic Access Level: Set to Private (no anonymous access) for security.\n\n\nClick “Create”.\n\n\n\n3.3. Upload Files:\n\nOpen the newly created container.\n\nClick “Upload” to add datasets like .csv, .json, etc.\n\nLearn More: Upload Files to Blob Storage\n\n\n3.4. Verify the Uploaded Data\nTo confirm that your data was uploaded successfully:\n\nGo to your container and check the list of uploaded files.\n\nYou can download files or review their properties directly in the portal.\n\nAzure Blob Storage ensures your data is secure, scalable, and always accessible for your data science workflows.\nLearn More: Azure Blob Storage Overview"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#step-4-train-a-machine-learning-model-with-azure-automl",
+    "href": "posts/azure-data-science/index.html#step-4-train-a-machine-learning-model-with-azure-automl",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "Step 4: Train a Machine Learning Model with Azure AutoML",
+    "text": "Step 4: Train a Machine Learning Model with Azure AutoML\nAzure AutoML makes it easier to create machine learning models by automating model selection and tuning. In htis step we will learn how to set up AutoML for training a tabular data. Although there are two ways of achiveing this. We will opt for the Azure CLI option. Run the following codes to set up on your machine.\nThe following are required a subscription, a resource group and a workspace.\nWe will be using the\naz login\nLearn more about AutoML: Azure AutoML Documentation"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#step-3-create-a-resource-group",
+    "href": "posts/azure-data-science/index.html#step-3-create-a-resource-group",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "Step 3: Create a Resource Group",
+    "text": "Step 3: Create a Resource Group\nA Resource Group in Azure is a container that keeps resources such as storage accounts, virtual machines, and databases. It helps keep your project organized and makes it easier to manage resources.\nAlthough you can create a Resource Group using the Azure CLI, in this guide, we’ll use the Azure Portal for a more visual and beginner-friendly experience.\n\n3.1. Create a Resource Group via Azure Portal\n\nGo to the Azure Portal.\nIn the search bar at the top, type “Resource Groups” and click on it.\nOr\nClick on the hamburger menu at the top left.\n\n\n\nClick the “+ Create” button to start creating a new Resource Group.\nFill in the details:\n\nSubscription: Select your Azure subscription.\n\nResource Group Name: Enter a name for your ressource.\n\nRegion: Choose a region close to you.\n\nClick “Review + Create” and then “Create” to finalize.\n\n\n\n3.2. Verify the Resource Group\nOnce the deployment is complete, you’ll be redirected to the Resource Group overview page where you can manage your resources.\n\nLearn more: Azure Resource Groups"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#step-4-configure-azure-storage",
+    "href": "posts/azure-data-science/index.html#step-4-configure-azure-storage",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "Step 4: Configure Azure Storage",
+    "text": "Step 4: Configure Azure Storage\nAzure Blob Storage is for storing large files, datasets, and backups. It allows easy access and sharing of data.\n\nCreate a Storage Account:\naz storage account create \\\n    --name datasciencestorage \\\n    --resource-group DataScienceRG \\\n    --location eastus \\\n    --sku Standard_LRS\n\nLearn more: Azure Blob Storage\n\nUpload Data to Blob Storage:\naz storage blob upload \\\n    --account-name datasciencestorage \\\n    --container-name datacontainer \\\n    --file data.csv \\\n    --name data.csv"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#step-5-train-a-machine-learning-model-with-azure-automl",
+    "href": "posts/azure-data-science/index.html#step-5-train-a-machine-learning-model-with-azure-automl",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "Step 5: Train a Machine Learning Model with Azure AutoML",
+    "text": "Step 5: Train a Machine Learning Model with Azure AutoML\nAzure AutoML makes it easier to create machine learning models by automating model selection and tuning.\nfrom azureml.core import Workspace, Experiment, Dataset\nfrom azureml.train.automl import AutoMLConfig\n\n# Connect to Azure Workspace\nws = Workspace.from_config()\nexperiment = Experiment(ws, 'automl_demo')\n\n# Load data from Blob Storage\ndatastore = ws.get_default_datastore()\ndataset = Dataset.Tabular.from_delimited_files(path=(datastore, 'datacontainer/data.csv'))\n\n# Configure AutoML settings\nautoml_config = AutoMLConfig(\n    task='classification',\n    primary_metric='accuracy',\n    training_data=dataset,\n    label_column_name='target',\n    experiment_timeout_minutes=60\n)\n\n# Submit the experiment\nrun = experiment.submit(automl_config)\nrun.wait_for_completion(show_output=True)\nLearn more about AutoML: Azure AutoML Documentation"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#step-2-create-a-resource-group",
+    "href": "posts/azure-data-science/index.html#step-2-create-a-resource-group",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "Step 2: Create a Resource Group",
+    "text": "Step 2: Create a Resource Group\nA Resource Group in Azure is a container that keeps resources such as storage accounts, virtual machines, and databases. It helps keep your project organized and makes it easier to manage resources.\nAlthough you can create a Resource Group using the Azure CLI, in this guide, we’ll use the Azure Portal for a more visual and beginner-friendly experience.\n\n2.1. Create a Resource Group via Azure Portal\n\nGo to the Azure Portal.\nIn the search bar at the top, type “Resource Groups” and click on it.\nor\nClick on the hamburger menu at the top left.\n\n\n\nClick the “+ Create” button to start creating a new Resource Group.\nFill in the details:\n\nSubscription: Select your Azure subscription.\n\nResource Group Name: Enter a name for your ressource.\n\nRegion: Choose a region close to you.\n\nClick “Review + Create” and then “Create” to finalize.\n\n\n\n2.2. Verify the Resource Group\nOnce the deployment is complete, you’ll be redirected to the Resource Group overview page where you can manage your resources.\n\nLearn more: Azure Resource Groups\n\nThe next step is to set up our Azure Storage to manage the project’s data."
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#step-6-deploy-the-model",
+    "href": "posts/azure-data-science/index.html#step-6-deploy-the-model",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "Step 6: Deploy the Model",
+    "text": "Step 6: Deploy the Model\nOnce the model is trained, it can be deployed as a web service for real-time predictions.\nfrom azureml.core.model import InferenceConfig, Model\nfrom azureml.core.webservice import AciWebservice\n\n# Register the model\nmodel = run.register_model(model_name='best_model', model_path='outputs/model.pkl')\n\n# Define inference configuration\ninference_config = InferenceConfig(entry_script=\"score.py\", environment=myenv)\n\ndeployment_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)\n\n# Deploy the model\nservice = Model.deploy(\n    workspace=ws,\n    name=\"model-service\",\n    models=[model],\n    inference_config=inference_config,\n    deployment_config=deployment_config\n)\nservice.wait_for_deployment(show_output=True)\n\nprint(f\"Scoring URI: {service.scoring_uri}\")\nLearn more: Deploy Models with Azure ML"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#why-choose-azure-for-data-science",
+    "href": "posts/azure-data-science/index.html#why-choose-azure-for-data-science",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "2 Why choose Azure for Data Science?",
+    "text": "2 Why choose Azure for Data Science?\nAzure stands out as a top cloud platform for data science due to its scalability, integration with popular data science tools, and machine learning services.\nScalability and Flexibility: Azure’s infrastructure allows you to scale computing resources up or down based on your project’s needs. This flexibility ensures that you only pay for what you use, making it cost-efficient for both small experiments and large-scale deployments.\nIntegration with Tools: Azure seamlessly integrates with Python, R, Jupyter Notebooks, and other popular data science tools, making it easy for data scientists to transition from local development to cloud-based workflows.\nServices: Key Azure services like Azure Machine Learning, Blob Storage, and Databricks simplify complex workflows. Azure also offers tools like Azure Data Factory for pipeline automation and Azure Cognitive Services for AI-driven applications.\nLet’s start by setting up Azure to begin your data science journey."
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#set-up-azure",
+    "href": "posts/azure-data-science/index.html#set-up-azure",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "3 Set Up Azure",
+    "text": "3 Set Up Azure\nGetting started with Azure is simple. If you don’t already have an Azure account, follow these steps:\n\n3.1 Sign Up\n\nVisit the Azure Website.\n\n\n\n\nAzure Page\n\n\n\nClick on “Start Free” to begin the sign-up process. (Note: Credit card information is required to try the free version of Azure.)\nSign in with your Microsoft account or create a new one if you don’t have one.\n\nAzure’s free account allows you to experiment and build solutions for one month as long as your credits last.\nLearn More: Billing and subscription documentation\n\n\n3.2 Install Azure CLI\nAzure CLI (Command-Line Interface) is a tool that allows you to manage Azure resources directly from your terminal. It simplifies the process of interacting with Azure services without needing to navigate the web portal.\n\n3.2.1 Download and Install Azure CLI\n\nGo to the Azure CLI Installation Page.\n\n\n\n\nAzure CLI Installation\n\n\n\nChoose the installation option based on your operating system (Windows, macOS, or Linux).\n\nFollow the step-by-step instructions provided on the page.\n\n\n\n3.2.2 Verify Installation\nAfter installation, open your terminal and run:\naz --version\nIf the installation was successful, this command will display the installed Azure CLI version.\n\n\n3.2.3 Sign In to Azure\nOnce Azure CLI is installed, sign in to your Azure account:\naz login\nA browser window will open prompting you to log in with your Azure credentials. After logging in, the CLI will display your subscription details. Azure CLI makes it easier to create and manage Azure resources efficiently, saving time and simplifying workflows.\nWith Azure CLI ready, let’s create a Resource Group to organize your project resources. This will help you efficiently manage and group related services, ensuring a smooth and organized workflow throughout your data science project."
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#create-a-resource-group",
+    "href": "posts/azure-data-science/index.html#create-a-resource-group",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "4 Create a Resource Group",
+    "text": "4 Create a Resource Group\nA Resource Group in Azure is a container that keeps resources such as storage accounts, virtual machines, and databases. It helps keep your project organized and makes it easier to manage resources.\nAlthough you can create a Resource Group using the Azure CLI, in this guide, we’ll use the Azure Portal for a more visual and beginner-friendly experience.\n\n4.1 Create a Resource Group via Azure Portal\n\nGo to the Azure Portal.\nIn the search bar at the top, type “Resource Groups” and click on it or click on the hamburger menu at the top left.\n\n\n\nClick the “+ Create” button to start creating a new Resource Group.\nFill in the details:\n\nSubscription: Select your Azure subscription.\n\nResource Group Name: Enter a name for your resource group.\n\nRegion: Choose a region close to you.\n\nClick “Review + Create” and then “Create” to finalize.\n\n\n\n4.2 Verify the Resource Group\nOnce the deployment is complete, you’ll be redirected to the Resource Group overview page where you can manage your resources.\n\nLearn more: Azure Resource Groups\n\nThe next step is to set up our Azure Storage to manage the project’s data."
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#configure-azure-storage",
+    "href": "posts/azure-data-science/index.html#configure-azure-storage",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "5 Configure Azure Storage",
+    "text": "5 Configure Azure Storage\nAzure Blob Storage is a solution for storing large files, datasets, and backups. It offers integration with other Azure services, making it an excellent choice for managing unstructured data in data science projects. Its scalability, security, and cost-effectiveness make it ideal for growing projects.\n\n5.1 Create a Storage Account\nA Storage Account in Azure allows you to access Blob Storage and other storage services.\n\nGo to the Azure Portal if you’re not already signed in.\n\nIn the search bar, type “Storage Accounts” and click on it.\n\nClick on “+ Create” to start a new storage account.\n\nFill in the details:\n- Subscription: Select your Azure subscription.\n- Resource Group: Choose the Resource Group you created earlier.\n- Storage Account Name: Enter a unique name using lowercase letters only.\n- Region: Select the same region as your Resource Group for better performance.\n- Performance: Keep as Standard for general use.\n- Redundancy: Choose Locally-redundant storage (LRS) for cost-effective redundancy.\n\nClick “Review + Create”, then click “Create” to deploy the storage account.\n\nLearn More: Create a Storage Account\n\n\n5.2 Upload Data to Blob Storage\nOnce your storage account is ready, you can upload data to Blob Storage.\n\nIn the Azure Portal, go to your Storage Account.\n\nUnder Data storage, click “Containers”.\n\nClick “+ Container” to create a new container.\n\nName: Enter a name for your container.\n\nPublic Access Level: Set to Private (no anonymous access) for security.\n\n\nClick “Create”.\n\n\n\n5.3 Upload Files:\n\nOpen the newly created container.\n\nClick “Upload” to add datasets like .csv, .json, etc.\n\nLearn More: Upload Files to Blob Storage\n\n\n5.4 Verify the Uploaded Data\nTo confirm that your data was uploaded successfully:\n\nGo to your container and check the list of uploaded files.\n\nYou can download files or review their properties directly in the portal.\n\nAzure Blob Storage ensures your data is secure, scalable, and always accessible for your data science workflows.\nLearn More: Azure Blob Storage Overview\nBefore diving into deployment, let’s explore the different options Azure offers for building and deploying machine learning models. Whether you’re looking for a beginner-friendly, no-code solution or a more advanced, code-driven workflow, Azure has the right tools for your needs."
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#train-and-deploy-a-machine-learning-model-with-azure-automl-and-docker",
+    "href": "posts/azure-data-science/index.html#train-and-deploy-a-machine-learning-model-with-azure-automl-and-docker",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "9 Train and Deploy a Machine Learning Model with Azure AutoML and Docker",
+    "text": "9 Train and Deploy a Machine Learning Model with Azure AutoML and Docker\nAzure AutoML simplifies the process of building machine learning models by automating model selection, feature engineering, and hyperparameter tuning. In this step, we will learn how to set up AutoML for training tabular data. We will use the Azure CLI for setup and integrate Docker for a more scalable deployment. Docker is ideal for customized, containerized deployments that require flexibility and control, while Azure ML provides a fully managed deployment environment with integrated monitoring and scalability.\n\n9.1 Set Up AutoML with Azure CLI\nBefore starting, ensure you have:\n\nAn active Azure subscription\nA created Resource Group\nAn Azure Machine Learning workspace\n\nStep 1: Log in to your Azure account:\naz login\nStep 2: Create a Machine Learning workspace:\naz ml workspace create -w myworkspace -g myresourcegroup\nStep 3: Create a compute cluster for training:\naz ml compute create -n mycompute -s STANDARD_DS12_V2 --max-nodes 4 -w myworkspace -g myresourcegroup\nLearn More: Azure AutoML Documentation\n\n\n9.2 Containerize the Model with Docker\nDocker allows you to package your machine learning model and its dependencies into a container, ensuring a consistent deployment across environments.\nStep 1: Install Docker if you haven’t already: Install Docker\nStep 2: Create a Dockerfile for your model:\nFROM python:3.8-slim\nWORKDIR /app\nCOPY requirements.txt ./\nRUN pip install -r requirements.txt\nCOPY . ./\nCMD [\"python\", \"score.py\"]\nStep 3: Build and run the Docker image:\ndocker build -t my-ml-model .\ndocker run -p 5000:5000 my-ml-model\n\n\n9.3 Deploy the Dockerized Model with Azure Container Instances (ACI)\nOnce the model is containerized, deploy it to Azure for real-time predictions."
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#deploy-the-model-with-azure-machine-learning",
+    "href": "posts/azure-data-science/index.html#deploy-the-model-with-azure-machine-learning",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "9 Deploy the Model with Azure Machine Learning",
+    "text": "9 Deploy the Model with Azure Machine Learning\nNow that the model is trained and optionally containerized with Docker, it’s time to deploy it as a web service for real-time predictions using Azure Machine Learning.\nStep 1: Register the model:\nfrom azureml.core.model import InferenceConfig, Model\nfrom azureml.core.webservice import AciWebservice\n\nmodel = run.register_model(model_name='best_model', model_path='outputs/model.pkl')\nStep 2: Define the inference configuration:\ninference_config = InferenceConfig(entry_script=\"score.py\", environment=myenv)\ndeployment_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)\nStep 3: Deploy the model:\nservice = Model.deploy(\n    workspace=ws,\n    name=\"model-service\",\n    models=[model],\n    inference_config=inference_config,\n    deployment_config=deployment_config\n)\nservice.wait_for_deployment(show_output=True)\nprint(f\"Scoring URI: {service.scoring_uri}\")\nBy using Azure Machine Learning for deployment, you get advanced monitoring, scaling, and management capabilities out-of-the-box.\nLearn More: Deploy Models with Azure ML\nWith your model successfully deployed and ready for real-time predictions, it’s important to follow best practices to ensure your solution remains secure, scalable, and cost-effective."
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#introduction-to-azure-machine-learning-studio-no-code-option",
+    "href": "posts/azure-data-science/index.html#introduction-to-azure-machine-learning-studio-no-code-option",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "8 Introduction to Azure Machine Learning Studio (No-Code Option)",
+    "text": "8 Introduction to Azure Machine Learning Studio (No-Code Option)\nAzure Machine Learning Studio is a beginner-friendly, no-code platform designed to help you build, train, and deploy machine learning models without writing any code. This is ideal if you’re just getting started with cloud computing or want to quickly test ideas.\n\n8.1 Access Azure Machine Learning Studio\n\nGo to the Azure Machine Learning Studio. \nSign in using your Azure account credentials.\nIf this is your first time, create a new Machine Learning Workspace by following the on-screen prompts.\n\n\n\n8.2 Create a New Automated ML Run\n\nIn the Azure ML Studio, navigate to the left-hand menu and click on Automated ML.\nClick + New Automated ML Run.\nSelect your dataset or upload a new dataset (e.g., CSV or Excel files).\nChoose a compute cluster or create a new one for model training.\nSelect the target column you want to predict and choose the type of machine learning task (Classification, Regression, or Time Series Forecasting).\nClick Finish to start the automated training process.\n\n\n\n8.3 Review and Deploy the Best Model\n\nOnce training is complete, Azure will present a leaderboard of models ranked by performance metrics.\nSelect the best-performing model.\nClick Deploy and choose Azure Container Instance (ACI) for a simple deployment.\nAzure will automatically deploy the model and provide a REST API endpoint for predictions."
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#automate-data-pipelines-with-azure-data-factory",
+    "href": "posts/azure-data-science/index.html#automate-data-pipelines-with-azure-data-factory",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "6 Automate Data Pipelines with Azure Data Factory",
+    "text": "6 Automate Data Pipelines with Azure Data Factory\nAs your projects grow, automating data workflows becomes essential. Azure Data Factory lets you create scalable data pipelines that move and transform data automatically. This step is perfect for building production-ready machine learning pipelines.\n\n6.1 Create a Data Pipeline in Azure Data Factory\n\nGo to the Azure Portal and search for Data Factory.\nClick + Create and fill in the details:\n\nResource Group: Select the resource group you created.\nRegion: Choose the same region as your other resources.\nName: Enter a unique name for your Data Factory instance.\n\nOnce deployed, click Author & Monitor to access the Data Factory UI.\n\n\n\n6.2 Build a Data Pipeline\n\nIn the Author section, click + and select Pipeline.\nDrag and drop a Copy Data activity onto the canvas.\nConfigure the Source (e.g., Azure Blob Storage) and Sink (e.g., Azure SQL Database or another Blob container).\nValidate and debug the pipeline to ensure it runs smoothly.\nClick Publish All to save the pipeline.\n\n\n\n6.3 Schedule the Pipeline\n\nClick on Add Trigger and select New/Edit.\nSet a schedule (daily, weekly, or custom) to automate data movement.\nMonitor pipeline runs in the Monitor section for successful execution."
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#sign-up",
+    "href": "posts/azure-data-science/index.html#sign-up",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "4 Sign Up",
+    "text": "4 Sign Up\n\nVisit the Azure Website.\n\n\n\n\nAzure Page\n\n\n\nClick on “Start Free” to begin the sign-up process. (Note: Credit card information is required to try the free version of Azure.)\nSign in with your Microsoft account or create a new one if you don’t have one.\n\nAzure’s free account allows you to experiment and build solutions for one month as long as your credits last.\nLearn More: Billing and subscription documentation\n\n4.1 3.2. Install Azure CLI\nAzure CLI (Command-Line Interface) is a tool that allows you to manage Azure resources directly from your terminal. It simplifies the process of interacting with Azure services without needing to navigate the web portal.\n\n4.1.1 3.2.1. Download and Install Azure CLI\n\nGo to the Azure CLI Installation Page.\n\n\n\n\nAzure CLI Installation\n\n\n\nChoose the installation option based on your operating system (Windows, macOS, or Linux).\n\nFollow the step-by-step instructions provided on the page.\n\n\n\n4.1.2 3.2.2. Verify Installation\nAfter installation, open your terminal and run:\naz --version\nIf the installation was successful, this command will display the installed Azure CLI version.\n\n\n4.1.3 3.3. Sign In to Azure\nOnce Azure CLI is installed, sign in to your Azure account:\naz login\nA browser window will open prompting you to log in with your Azure credentials. After logging in, the CLI will display your subscription details. Azure CLI makes it easier to create and manage Azure resources efficiently, saving time and simplifying workflows.\nWith Azure CLI ready, let’s create a Resource Group to organize your project resources. This will help you efficiently manage and group related services, ensuring a smooth and organized workflow throughout your data science project."
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#section",
+    "href": "posts/azure-data-science/index.html#section",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "7 ",
+    "text": "7"
+  },
+  {
+    "objectID": "posts/azure-data-science/index.html#choosing-your-deployment-path",
+    "href": "posts/azure-data-science/index.html#choosing-your-deployment-path",
+    "title": "Getting started with Microsoft Azure for Data Science projects",
+    "section": "7 Choosing Your Deployment Path",
+    "text": "7 Choosing Your Deployment Path\nBefore diving into deployment, it’s essential to select the path that best fits your experience level and project needs:\n\nChoose No-Code Deployment with Azure Machine Learning Studio if you prefer a beginner-friendly, drag-and-drop interface for quick model deployment.\nChoose Code-Based Deployment with Azure AutoML and Docker if you want more control, customization, and scalability in your deployment process."
   }
 ]

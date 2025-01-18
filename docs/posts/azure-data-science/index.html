@@ -9,7 +9,7 @@
 <meta name="author" content="Colombe Tolokin">
 <meta name="dcterms.date" content="2025-01-14">
 
-<title>Azure Data Science Blog</title>
+<title>Getting started with Microsoft Azure for Data Science projects – Data Science Blog - Colombe Tolokin</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -73,15 +107,15 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Azure Data Science Blog</span>
+    <span class="navbar-title">Data Science Blog - Colombe Tolokin</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -92,15 +126,10 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">about.html</span></a>
+<span class="menu-text">Connect</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -112,48 +141,425 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Azure Data Science Blog</h1>
-                      </div>
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#why-choose-azure-for-data-science" id="toc-why-choose-azure-for-data-science" class="nav-link" data-scroll-target="#why-choose-azure-for-data-science"><span class="header-section-number">2</span> Why choose Azure for Data Science?</a></li>
+  <li><a href="#set-up-azure" id="toc-set-up-azure" class="nav-link" data-scroll-target="#set-up-azure"><span class="header-section-number">3</span> Set Up Azure</a>
+  <ul class="collapse">
+  <li><a href="#sign-up" id="toc-sign-up" class="nav-link" data-scroll-target="#sign-up"><span class="header-section-number">3.1</span> <strong>Sign Up</strong></a></li>
+  <li><a href="#install-azure-cli" id="toc-install-azure-cli" class="nav-link" data-scroll-target="#install-azure-cli"><span class="header-section-number">3.2</span> <strong>Install Azure CLI</strong></a></li>
+  </ul></li>
+  <li><a href="#create-a-resource-group" id="toc-create-a-resource-group" class="nav-link" data-scroll-target="#create-a-resource-group"><span class="header-section-number">4</span> Create a Resource Group</a>
+  <ul class="collapse">
+  <li><a href="#create-a-resource-group-via-azure-portal" id="toc-create-a-resource-group-via-azure-portal" class="nav-link" data-scroll-target="#create-a-resource-group-via-azure-portal"><span class="header-section-number">4.1</span> <strong>Create a Resource Group via Azure Portal</strong></a></li>
+  <li><a href="#verify-the-resource-group" id="toc-verify-the-resource-group" class="nav-link" data-scroll-target="#verify-the-resource-group"><span class="header-section-number">4.2</span> <strong>Verify the Resource Group</strong></a></li>
+  </ul></li>
+  <li><a href="#configure-azure-storage" id="toc-configure-azure-storage" class="nav-link" data-scroll-target="#configure-azure-storage"><span class="header-section-number">5</span> Configure Azure Storage</a>
+  <ul class="collapse">
+  <li><a href="#create-a-storage-account" id="toc-create-a-storage-account" class="nav-link" data-scroll-target="#create-a-storage-account"><span class="header-section-number">5.1</span> <strong>Create a Storage Account</strong></a></li>
+  <li><a href="#upload-data-to-blob-storage" id="toc-upload-data-to-blob-storage" class="nav-link" data-scroll-target="#upload-data-to-blob-storage"><span class="header-section-number">5.2</span> <strong>Upload Data to Blob Storage</strong></a></li>
+  <li><a href="#upload-files" id="toc-upload-files" class="nav-link" data-scroll-target="#upload-files"><span class="header-section-number">5.3</span> <strong>Upload Files:</strong></a></li>
+  <li><a href="#verify-the-uploaded-data" id="toc-verify-the-uploaded-data" class="nav-link" data-scroll-target="#verify-the-uploaded-data"><span class="header-section-number">5.4</span> <strong>Verify the Uploaded Data</strong></a></li>
+  </ul></li>
+  <li><a href="#automate-data-pipelines-with-azure-data-factory" id="toc-automate-data-pipelines-with-azure-data-factory" class="nav-link" data-scroll-target="#automate-data-pipelines-with-azure-data-factory"><span class="header-section-number">6</span> Automate Data Pipelines with Azure Data Factory</a>
+  <ul class="collapse">
+  <li><a href="#create-a-data-pipeline-in-azure-data-factory" id="toc-create-a-data-pipeline-in-azure-data-factory" class="nav-link" data-scroll-target="#create-a-data-pipeline-in-azure-data-factory"><span class="header-section-number">6.1</span> <strong>Create a Data Pipeline in Azure Data Factory</strong></a></li>
+  <li><a href="#build-a-data-pipeline" id="toc-build-a-data-pipeline" class="nav-link" data-scroll-target="#build-a-data-pipeline"><span class="header-section-number">6.2</span> <strong>Build a Data Pipeline</strong></a></li>
+  <li><a href="#schedule-the-pipeline" id="toc-schedule-the-pipeline" class="nav-link" data-scroll-target="#schedule-the-pipeline"><span class="header-section-number">6.3</span> <strong>Schedule the Pipeline</strong></a></li>
+  </ul></li>
+  <li><a href="#choosing-your-deployment-path" id="toc-choosing-your-deployment-path" class="nav-link" data-scroll-target="#choosing-your-deployment-path"><span class="header-section-number">7</span> Choosing Your Deployment Path</a></li>
+  <li><a href="#introduction-to-azure-machine-learning-studio-no-code-option" id="toc-introduction-to-azure-machine-learning-studio-no-code-option" class="nav-link" data-scroll-target="#introduction-to-azure-machine-learning-studio-no-code-option"><span class="header-section-number">8</span> Introduction to Azure Machine Learning Studio (No-Code Option)</a>
+  <ul class="collapse">
+  <li><a href="#access-azure-machine-learning-studio" id="toc-access-azure-machine-learning-studio" class="nav-link" data-scroll-target="#access-azure-machine-learning-studio"><span class="header-section-number">8.1</span> <strong>Access Azure Machine Learning Studio</strong></a></li>
+  <li><a href="#create-a-new-automated-ml-run" id="toc-create-a-new-automated-ml-run" class="nav-link" data-scroll-target="#create-a-new-automated-ml-run"><span class="header-section-number">8.2</span> <strong>Create a New Automated ML Run</strong></a></li>
+  <li><a href="#review-and-deploy-the-best-model" id="toc-review-and-deploy-the-best-model" class="nav-link" data-scroll-target="#review-and-deploy-the-best-model"><span class="header-section-number">8.3</span> <strong>Review and Deploy the Best Model</strong></a></li>
+  </ul></li>
+  <li><a href="#train-and-deploy-a-machine-learning-model-with-azure-automl-and-docker" id="toc-train-and-deploy-a-machine-learning-model-with-azure-automl-and-docker" class="nav-link" data-scroll-target="#train-and-deploy-a-machine-learning-model-with-azure-automl-and-docker"><span class="header-section-number">9</span> Train and Deploy a Machine Learning Model with Azure AutoML and Docker</a>
+  <ul class="collapse">
+  <li><a href="#set-up-automl-with-azure-cli" id="toc-set-up-automl-with-azure-cli" class="nav-link" data-scroll-target="#set-up-automl-with-azure-cli"><span class="header-section-number">9.1</span> <strong>Set Up AutoML with Azure CLI</strong></a></li>
+  <li><a href="#containerize-the-model-with-docker" id="toc-containerize-the-model-with-docker" class="nav-link" data-scroll-target="#containerize-the-model-with-docker"><span class="header-section-number">9.2</span> <strong>Containerize the Model with Docker</strong></a></li>
+  <li><a href="#deploy-the-dockerized-model-with-azure-container-instances-aci" id="toc-deploy-the-dockerized-model-with-azure-container-instances-aci" class="nav-link" data-scroll-target="#deploy-the-dockerized-model-with-azure-container-instances-aci"><span class="header-section-number">9.3</span> <strong>Deploy the Dockerized Model with Azure Container Instances (ACI)</strong></a></li>
+  </ul></li>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices"><span class="header-section-number">10</span> Best Practices</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">11</span> Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">12</span> References</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Getting started with Microsoft Azure for Data Science projects</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Azure</div>
+    <div class="quarto-category">Data Science</div>
+    <div class="quarto-category">Cloud</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Colombe Tolokin </p>
+          </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 14, 2025</p>
+    </div>
+  </div>
   
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Colombe Tolokin </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">January 14, 2025</p>
-      </div>
-    </div>
     
-      
-    </div>
-    
+  </div>
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    
-<!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
+</header>
 
 
+<section id="introduction" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
+<p>Cloud computing has transformed the data science by providing scalable, flexible, and powerful tools to handle large datasets, build complex models, and deploy applications. Microsoft Azure is a leading cloud computing platform that offers a wide range of services for data scientists. From scalable storage to automated machine learning, Azure simplifies the entire data science workflow.</p>
+<p>In this blog, I will guide you step-by-step on how to set up your Azure environment, store data, train a machine learning model, and deploy it for real-world use. Whether you’re just getting started or looking to streamline your data science projects, Azure provides all the tools to make your workflow more efficient and effective.</p>
+<p>This guide covers both <strong>code-based</strong> and <strong>no-code</strong> methods to build and deploy machine learning models on Azure. If you’re eager to dive into coding for full control or prefer a visual, drag-and-drop interface to get started quickly, Azure has you covered. You’ll learn how to manage data, train models, and deploy solutions—step-by-step.</p>
+<p>Having used Azure in my previous role as a data scientist intern, I can confidently say it has modernized our data workflows and accelerated model deployment in team projects. Azure’s flexibility allowed us to scale infrastructure according to project demands and seamlessly integrate machine learning models into production environments.</p>
+</section>
+<section id="why-choose-azure-for-data-science" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="why-choose-azure-for-data-science"><span class="header-section-number">2</span> Why choose Azure for Data Science?</h2>
+<p>Azure stands out as a top cloud platform for data science due to its scalability, integration with popular data science tools, and machine learning services.</p>
+<p>Scalability and Flexibility: Azure’s infrastructure allows you to scale computing resources up or down based on your project’s needs. This flexibility ensures that you only pay for what you use, making it cost-efficient for both small experiments and large-scale deployments.</p>
+<p>Integration with Tools: Azure seamlessly integrates with Python, R, Jupyter Notebooks, and other popular data science tools, making it easy for data scientists to transition from local development to cloud-based workflows.</p>
+<p>Services: Key Azure services like Azure Machine Learning, Blob Storage, and Databricks simplify complex workflows. Azure also offers tools like Azure Data Factory for pipeline automation and Azure Cognitive Services for AI-driven applications.</p>
+<p>Let’s start by setting up Azure to begin your data science journey.</p>
+</section>
+<section id="set-up-azure" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="set-up-azure"><span class="header-section-number">3</span> Set Up Azure</h2>
+<p>Getting started with Azure is simple. If you don’t already have an Azure account, follow these steps:</p>
+<section id="sign-up" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="sign-up"><span class="header-section-number">3.1</span> <strong>Sign Up</strong></h3>
+<ul>
+<li>Visit the <a href="https://azure.microsoft.com/en-ca/">Azure Website</a>.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/start_with_AZURE.png" class="img-fluid figure-img"></p>
+<figcaption>Azure Page</figcaption>
+</figure>
+</div>
+<ul>
+<li><p>Click on <strong>“Start Free”</strong> to begin the sign-up process. (Note: Credit card information is required to try the free version of Azure.)</p></li>
+<li><p>Sign in with your Microsoft account or create a new one if you don’t have one.</p></li>
+</ul>
+<p>Azure’s free account allows you to experiment and build solutions for one month as long as your credits last.</p>
+<p><strong>Learn More:</strong> <a href="https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/">Billing and subscription documentation</a></p>
+</section>
+<section id="install-azure-cli" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="install-azure-cli"><span class="header-section-number">3.2</span> <strong>Install Azure CLI</strong></h3>
+<p>Azure CLI (Command-Line Interface) is a tool that allows you to manage Azure resources directly from your terminal. It simplifies the process of interacting with Azure services without needing to navigate the web portal.</p>
+<section id="download-and-install-azure-cli" class="level4" data-number="3.2.1">
+<h4 data-number="3.2.1" class="anchored" data-anchor-id="download-and-install-azure-cli"><span class="header-section-number">3.2.1</span> <strong>Download and Install Azure CLI</strong></h4>
+<ul>
+<li>Go to the <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI Installation Page</a>.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/azure_cli_install.png" class="img-fluid figure-img"></p>
+<figcaption>Azure CLI Installation</figcaption>
+</figure>
+</div>
+<ul>
+<li>Choose the installation option based on your operating system (Windows, macOS, or Linux).<br>
+</li>
+<li>Follow the step-by-step instructions provided on the page.</li>
+</ul>
+</section>
+<section id="verify-installation" class="level4" data-number="3.2.2">
+<h4 data-number="3.2.2" class="anchored" data-anchor-id="verify-installation"><span class="header-section-number">3.2.2</span> <strong>Verify Installation</strong></h4>
+<p>After installation, open your terminal and run:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">az</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If the installation was successful, this command will display the installed Azure CLI version.</p>
+</section>
+<section id="sign-in-to-azure" class="level4" data-number="3.2.3">
+<h4 data-number="3.2.3" class="anchored" data-anchor-id="sign-in-to-azure"><span class="header-section-number">3.2.3</span> <strong>Sign In to Azure</strong></h4>
+<p>Once Azure CLI is installed, sign in to your Azure account:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">az</span> login</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A browser window will open prompting you to log in with your Azure credentials. After logging in, the CLI will display your subscription details. Azure CLI makes it easier to create and manage Azure resources efficiently, saving time and simplifying workflows.</p>
+<p>With Azure CLI ready, let’s create a Resource Group to organize your project resources. This will help you efficiently manage and group related services, ensuring a smooth and organized workflow throughout your data science project.</p>
+</section>
+</section>
+</section>
+<section id="create-a-resource-group" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="create-a-resource-group"><span class="header-section-number">4</span> Create a Resource Group</h2>
+<p>A Resource Group in Azure is a container that keeps resources such as storage accounts, virtual machines, and databases. It helps keep your project organized and makes it easier to manage resources.</p>
+<p>Although you can create a Resource Group using the <strong>Azure CLI</strong>, in this guide, we’ll use the <strong>Azure Portal</strong> for a more visual and beginner-friendly experience.</p>
+<section id="create-a-resource-group-via-azure-portal" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="create-a-resource-group-via-azure-portal"><span class="header-section-number">4.1</span> <strong>Create a Resource Group via Azure Portal</strong></h3>
+<ul>
+<li><p>Go to the <a href="https://portal.azure.com/">Azure Portal</a>.</p></li>
+<li><p>In the search bar at the top, type <strong>“Resource Groups”</strong> and click on it or click on the hamburger menu at the top left.</p></li>
+</ul>
+<p><img src="img/resource_group.png" alt="Resource Groups" height="800"></p>
+<ul>
+<li><p>Click the <strong>“+ Create”</strong> button to start creating a new Resource Group.</p></li>
+<li><p><strong>Fill in the details:</strong></p>
+<ul>
+<li><strong>Subscription:</strong> Select your Azure subscription.<br>
+</li>
+<li><strong>Resource Group Name:</strong> Enter a name for your resource group.<br>
+</li>
+<li><strong>Region:</strong> Choose a region close to you.</li>
+</ul></li>
+<li><p>Click <strong>“Review + Create”</strong> and then <strong>“Create”</strong> to finalize.</p></li>
+</ul>
+</section>
+<section id="verify-the-resource-group" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="verify-the-resource-group"><span class="header-section-number">4.2</span> <strong>Verify the Resource Group</strong></h3>
+<p>Once the deployment is complete, you’ll be redirected to the Resource Group overview page where you can manage your resources.</p>
+<ul>
+<li>Learn more: <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal">Azure Resource Groups</a></li>
+</ul>
+<p>The next step is to set up our Azure Storage to manage the project’s data.</p>
+</section>
+</section>
+<section id="configure-azure-storage" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="configure-azure-storage"><span class="header-section-number">5</span> Configure Azure Storage</h2>
+<p>Azure Blob Storage is a solution for storing large files, datasets, and backups. It offers integration with other Azure services, making it an excellent choice for managing unstructured data in data science projects. Its scalability, security, and cost-effectiveness make it ideal for growing projects.</p>
+<section id="create-a-storage-account" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="create-a-storage-account"><span class="header-section-number">5.1</span> <strong>Create a Storage Account</strong></h3>
+<p>A <strong>Storage Account</strong> in Azure allows you to access Blob Storage and other storage services.</p>
+<ul>
+<li>Go to the <a href="https://portal.azure.com/">Azure Portal</a> if you’re not already signed in.<br>
+</li>
+<li>In the search bar, type <strong>“Storage Accounts”</strong> and click on it.<br>
+</li>
+<li>Click on <strong>“+ Create”</strong> to start a new storage account.</li>
+</ul>
+<p><strong>Fill in the details:</strong><br>
+- <strong>Subscription:</strong> Select your Azure subscription.<br>
+- <strong>Resource Group:</strong> Choose the Resource Group you created earlier.<br>
+- <strong>Storage Account Name:</strong> Enter a unique name using lowercase letters only.<br>
+- <strong>Region:</strong> Select the same region as your Resource Group for better performance.<br>
+- <strong>Performance:</strong> Keep as <strong>Standard</strong> for general use.<br>
+- <strong>Redundancy:</strong> Choose <strong>Locally-redundant storage (LRS)</strong> for cost-effective redundancy.</p>
+<ul>
+<li>Click <strong>“Review + Create”</strong>, then click <strong>“Create”</strong> to deploy the storage account.</li>
+</ul>
+<p><strong>Learn More:</strong> <a href="https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create">Create a Storage Account</a></p>
+</section>
+<section id="upload-data-to-blob-storage" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="upload-data-to-blob-storage"><span class="header-section-number">5.2</span> <strong>Upload Data to Blob Storage</strong></h3>
+<p>Once your storage account is ready, you can upload data to Blob Storage.</p>
+<ul>
+<li>In the Azure Portal, go to your <strong>Storage Account</strong>.<br>
+</li>
+<li>Under <strong>Data storage</strong>, click <strong>“Containers”</strong>.<br>
+</li>
+<li>Click <strong>“+ Container”</strong> to create a new container.
+<ul>
+<li><strong>Name:</strong> Enter a name for your container.<br>
+</li>
+<li><strong>Public Access Level:</strong> Set to <strong>Private (no anonymous access)</strong> for security.<br>
+</li>
+</ul></li>
+<li>Click <strong>“Create”</strong>.</li>
+</ul>
+</section>
+<section id="upload-files" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="upload-files"><span class="header-section-number">5.3</span> <strong>Upload Files:</strong></h3>
+<ul>
+<li>Open the newly created container.<br>
+</li>
+<li>Click <strong>“Upload”</strong> to add datasets like <code>.csv</code>, <code>.json</code>, etc.</li>
+</ul>
+<p><strong>Learn More:</strong> <a href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal">Upload Files to Blob Storage</a></p>
+</section>
+<section id="verify-the-uploaded-data" class="level3" data-number="5.4">
+<h3 data-number="5.4" class="anchored" data-anchor-id="verify-the-uploaded-data"><span class="header-section-number">5.4</span> <strong>Verify the Uploaded Data</strong></h3>
+<p>To confirm that your data was uploaded successfully:</p>
+<ul>
+<li>Go to your container and check the list of uploaded files.<br>
+</li>
+<li>You can download files or review their properties directly in the portal.</li>
+</ul>
+<p>Azure Blob Storage ensures your data is secure, scalable, and always accessible for your data science workflows.</p>
+<p><strong>Learn More:</strong> <a href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-overview">Azure Blob Storage Overview</a></p>
+<p>Before diving into deployment, let’s explore the different options Azure offers for building and deploying machine learning models. Whether you’re looking for a beginner-friendly, no-code solution or a more advanced, code-driven workflow, Azure has the right tools for your needs.</p>
+</section>
+</section>
+<section id="automate-data-pipelines-with-azure-data-factory" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="automate-data-pipelines-with-azure-data-factory"><span class="header-section-number">6</span> Automate Data Pipelines with Azure Data Factory</h2>
+<p>As your projects grow, automating data workflows becomes essential. Azure Data Factory lets you create scalable data pipelines that move and transform data automatically. This step is perfect for building production-ready machine learning pipelines.</p>
+<section id="create-a-data-pipeline-in-azure-data-factory" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="create-a-data-pipeline-in-azure-data-factory"><span class="header-section-number">6.1</span> <strong>Create a Data Pipeline in Azure Data Factory</strong></h3>
+<ol type="1">
+<li>Go to the <a href="https://portal.azure.com/">Azure Portal</a> and search for <strong>Data Factory</strong>.</li>
+<li>Click <strong>+ Create</strong> and fill in the details:
+<ul>
+<li><strong>Resource Group:</strong> Select the resource group you created.</li>
+<li><strong>Region:</strong> Choose the same region as your other resources.</li>
+<li><strong>Name:</strong> Enter a unique name for your Data Factory instance.</li>
+</ul></li>
+<li>Once deployed, click <strong>Author &amp; Monitor</strong> to access the Data Factory UI.</li>
+</ol>
+</section>
+<section id="build-a-data-pipeline" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="build-a-data-pipeline"><span class="header-section-number">6.2</span> <strong>Build a Data Pipeline</strong></h3>
+<ol type="1">
+<li>In the <strong>Author</strong> section, click <strong>+</strong> and select <strong>Pipeline</strong>.</li>
+<li>Drag and drop a <strong>Copy Data</strong> activity onto the canvas.</li>
+<li>Configure the <strong>Source</strong> (e.g., Azure Blob Storage) and <strong>Sink</strong> (e.g., Azure SQL Database or another Blob container).</li>
+<li>Validate and debug the pipeline to ensure it runs smoothly.</li>
+<li>Click <strong>Publish All</strong> to save the pipeline.</li>
+</ol>
+</section>
+<section id="schedule-the-pipeline" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="schedule-the-pipeline"><span class="header-section-number">6.3</span> <strong>Schedule the Pipeline</strong></h3>
+<ol type="1">
+<li>Click on <strong>Add Trigger</strong> and select <strong>New/Edit</strong>.</li>
+<li>Set a schedule (daily, weekly, or custom) to automate data movement.</li>
+<li>Monitor pipeline runs in the <strong>Monitor</strong> section for successful execution.</li>
+</ol>
+</section>
+</section>
+<section id="choosing-your-deployment-path" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="choosing-your-deployment-path"><span class="header-section-number">7</span> Choosing Your Deployment Path</h2>
+<p>Before diving into deployment, it’s essential to select the path that best fits your experience level and project needs:</p>
+<ul>
+<li><strong>Choose No-Code Deployment with Azure Machine Learning Studio</strong> if you prefer a beginner-friendly, drag-and-drop interface for quick model deployment.</li>
+<li><strong>Choose Code-Based Deployment with Azure AutoML and Docker</strong> if you want more control, customization, and scalability in your deployment process.</li>
+</ul>
+</section>
+<section id="introduction-to-azure-machine-learning-studio-no-code-option" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="introduction-to-azure-machine-learning-studio-no-code-option"><span class="header-section-number">8</span> Introduction to Azure Machine Learning Studio (No-Code Option)</h2>
+<p>Azure Machine Learning Studio is a beginner-friendly, no-code platform designed to help you build, train, and deploy machine learning models without writing any code. This is ideal if you’re just getting started with cloud computing or want to quickly test ideas.</p>
+<section id="access-azure-machine-learning-studio" class="level3" data-number="8.1">
+<h3 data-number="8.1" class="anchored" data-anchor-id="access-azure-machine-learning-studio"><span class="header-section-number">8.1</span> <strong>Access Azure Machine Learning Studio</strong></h3>
+<ol type="1">
+<li><p>Go to the <a href="https://ml.azure.com/">Azure Machine Learning Studio</a>. <img src="img/Azure_Machine_Learning_Studio.png" class="img-fluid"></p></li>
+<li><p>Sign in using your Azure account credentials.</p></li>
+<li><p>If this is your first time, create a new <strong>Machine Learning Workspace</strong> by following the on-screen prompts.</p></li>
+</ol>
+</section>
+<section id="create-a-new-automated-ml-run" class="level3" data-number="8.2">
+<h3 data-number="8.2" class="anchored" data-anchor-id="create-a-new-automated-ml-run"><span class="header-section-number">8.2</span> <strong>Create a New Automated ML Run</strong></h3>
+<ol type="1">
+<li>In the <strong>Azure ML Studio</strong>, navigate to the left-hand menu and click on <strong>Automated ML</strong>.</li>
+<li>Click <strong>+ New Automated ML Run</strong>.</li>
+<li>Select your dataset or upload a new dataset (e.g., CSV or Excel files).</li>
+<li>Choose a compute cluster or create a new one for model training.</li>
+<li>Select the target column you want to predict and choose the type of machine learning task (Classification, Regression, or Time Series Forecasting).</li>
+<li>Click <strong>Finish</strong> to start the automated training process.</li>
+</ol>
+</section>
+<section id="review-and-deploy-the-best-model" class="level3" data-number="8.3">
+<h3 data-number="8.3" class="anchored" data-anchor-id="review-and-deploy-the-best-model"><span class="header-section-number">8.3</span> <strong>Review and Deploy the Best Model</strong></h3>
+<ol type="1">
+<li>Once training is complete, Azure will present a leaderboard of models ranked by performance metrics.</li>
+<li>Select the best-performing model.</li>
+<li>Click <strong>Deploy</strong> and choose <strong>Azure Container Instance (ACI)</strong> for a simple deployment.</li>
+<li>Azure will automatically deploy the model and provide a REST API endpoint for predictions.</li>
+</ol>
+</section>
+</section>
+<section id="train-and-deploy-a-machine-learning-model-with-azure-automl-and-docker" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="train-and-deploy-a-machine-learning-model-with-azure-automl-and-docker"><span class="header-section-number">9</span> Train and Deploy a Machine Learning Model with Azure AutoML and Docker</h2>
+<p>Azure AutoML simplifies the process of building machine learning models by automating model selection, feature engineering, and hyperparameter tuning. In this step, we will learn how to set up AutoML for training tabular data. We will use the Azure CLI for setup and integrate Docker for a more scalable deployment. Docker is ideal for customized, containerized deployments that require flexibility and control, while Azure ML provides a fully managed deployment environment with integrated monitoring and scalability.</p>
+<section id="set-up-automl-with-azure-cli" class="level3" data-number="9.1">
+<h3 data-number="9.1" class="anchored" data-anchor-id="set-up-automl-with-azure-cli"><span class="header-section-number">9.1</span> <strong>Set Up AutoML with Azure CLI</strong></h3>
+<p>Before starting, ensure you have:</p>
+<ul>
+<li>An active Azure subscription</li>
+<li>A created Resource Group</li>
+<li>An Azure Machine Learning workspace</li>
+</ul>
+<p><strong>Step 1:</strong> Log in to your Azure account:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">az</span> login</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Step 2:</strong> Create a Machine Learning workspace:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">az</span> ml workspace create <span class="at">-w</span> myworkspace <span class="at">-g</span> myresourcegroup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Step 3:</strong> Create a compute cluster for training:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">az</span> ml compute create <span class="at">-n</span> mycompute <span class="at">-s</span> STANDARD_DS12_V2 <span class="at">--max-nodes</span> 4 <span class="at">-w</span> myworkspace <span class="at">-g</span> myresourcegroup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Learn More:</strong> <a href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-train">Azure AutoML Documentation</a></p>
+</section>
+<section id="containerize-the-model-with-docker" class="level3" data-number="9.2">
+<h3 data-number="9.2" class="anchored" data-anchor-id="containerize-the-model-with-docker"><span class="header-section-number">9.2</span> <strong>Containerize the Model with Docker</strong></h3>
+<p>Docker allows you to package your machine learning model and its dependencies into a container, ensuring a consistent deployment across environments.</p>
+<p><strong>Step 1:</strong> Install Docker if you haven’t already: <a href="https://docs.docker.com/get-docker/">Install Docker</a></p>
+<p><strong>Step 2:</strong> Create a <code>Dockerfile</code> for your model:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> python:3.8-slim</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /app</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> requirements.txt ./</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> . ./</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">"python"</span>, <span class="st">"score.py"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Step 3:</strong> Build and run the Docker image:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> my-ml-model .</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-p</span> 5000:5000 my-ml-model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="deploy-the-dockerized-model-with-azure-container-instances-aci" class="level3" data-number="9.3">
+<h3 data-number="9.3" class="anchored" data-anchor-id="deploy-the-dockerized-model-with-azure-container-instances-aci"><span class="header-section-number">9.3</span> <strong>Deploy the Dockerized Model with Azure Container Instances (ACI)</strong></h3>
+<p>Once the model is containerized, deploy it to Azure for real-time predictions.</p>
+</section>
+</section>
+<section id="best-practices" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="best-practices"><span class="header-section-number">10</span> Best Practices</h2>
+<ul>
+<li><strong>Resource Management:</strong> Use Azure Cost Management tools to monitor and control cloud spending. Regularly review active resources and shut down unused services to minimize unnecessary costs.</li>
+<li><strong>Data Security:</strong> Apply encryption for data at rest and in transit. Implement Role-Based Access Control (RBAC) to restrict access to sensitive resources.</li>
+<li><strong>Scaling:</strong> Use Azure Kubernetes Service (AKS) for scalable deployments. Leverage auto-scaling to handle fluctuating workloads efficiently.</li>
+<li><strong>Automation:</strong> Integrate CI/CD pipelines with Azure DevOps or GitHub Actions for automated model retraining and deployment, ensuring consistent and reliable updates.</li>
+<li><strong>Monitoring:</strong> Use Azure Monitor and Application Insights to track model performance and detect issues in real-time.</li>
+</ul>
+</section>
+<section id="conclusion" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">11</span> Conclusion</h2>
+<p>Microsoft Azure is a powerful tool for building, training, and deploying machine learning models. Its scalable and flexible services make it ideal for data science projects. By following this guide, you can efficiently manage your data science workflow, from data storage to deploying models for real-world use. Azure empowers data scientists to build secure, scalable, and impactful solutions that drive meaningful insights and innovation.</p>
+<p>Ready to get started? Sign up for a free Azure account today and start building your next data science solution!</p>
+</section>
+<section id="references" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="references"><span class="header-section-number">12</span> References</h2>
+<ol type="1">
+<li><strong>Azure in the Context of Data Science</strong><a href="https://www.spyglassmtg.com/blog/azure-in-the-context-of-data-science">https://www.spyglassmtg.com/blog/azure-in-the-context-of-data-science</a></li>
+<li><strong>Azure Free Account:</strong> <a href="https://azure.microsoft.com/en-ca/free/">https://azure.microsoft.com/en-ca/free/</a><br>
+</li>
+<li><strong>Azure CLI Installation:</strong> <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli">https://docs.microsoft.com/en-us/cli/azure/install-azure-cli</a><br>
+</li>
+<li><strong>Azure Cost Management and Billing:</strong> <a href="https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/">https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/</a><br>
+</li>
+<li><strong>Azure Portal - Resource Groups:</strong> <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal">https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal</a><br>
+</li>
+<li><strong>Create a Storage Account:</strong> <a href="https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create">https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create</a><br>
+</li>
+<li><strong>Upload Files to Blob Storage:</strong> <a href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal">https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal</a><br>
+</li>
+<li><strong>Azure Blob Storage Overview:</strong> <a href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-overview">https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-overview</a><br>
+</li>
+<li><strong>Azure AutoML Documentation:</strong> <a href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-train">https://learn.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-train</a><br>
+</li>
+<li><strong>Deploy Docker Containers in Azure:</strong> <a href="https://learn.microsoft.com/en-us/azure/container-instances/container-instances-overview">https://learn.microsoft.com/en-us/azure/container-instances/container-instances-overview</a><br>
+</li>
+<li><strong>Deploy Models with Azure ML:</strong> <a href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-and-where">https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-and-where</a></li>
+</ol>
 
-<p>This is a post with executable code.</p>
 
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
